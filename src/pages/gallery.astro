@@ -1,16 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const events = [
-  { label: 'Sturgis Motorcycle Rally', location: 'Sturgis, SD', tag: 'Rally' },
-  { label: 'Daytona Bike Week', location: 'Daytona Beach, FL', tag: 'Rally' },
-  { label: 'Route 66 Run', location: 'Chicago → LA', tag: 'Road Trip' },
-  { label: 'Laconia Motorcycle Week', location: 'Laconia, NH', tag: 'Rally' },
-  { label: 'Local Bike Night', location: 'Various', tag: 'Community' },
-  { label: 'Mountain Pass Ride', location: 'Rocky Mountains', tag: 'Road Trip' },
-  { label: 'Bikes on the Boardwalk', location: 'Ocean City, MD', tag: 'Show' },
-  { label: 'Thunder in the Valley', location: 'Johnstown, PA', tag: 'Rally' },
-  { label: 'Arizona Desert Run', location: 'Phoenix, AZ', tag: 'Road Trip' },
+const photos = [
+  { src: '/images/harley-urban.jpg',         label: 'Street Run',           location: 'Urban',              tag: 'Rally'     },
+  { src: '/images/rider-corner.jpg',          label: 'Corner Work',          location: 'Open Road',          tag: 'Rally'     },
+  { src: '/images/aerial-mountain-rider.jpg', label: 'Mountain Pass',        location: 'Colorado Rockies',   tag: 'Rally'     },
+  { src: '/images/desert-highway.jpg',        label: 'Desert Run',           location: 'Eastern Sierra, CA', tag: 'Road Trip' },
+  { src: '/images/mountain-highway.jpg',      label: 'Open Horizon',         location: 'Southwest',          tag: 'Road Trip' },
+  { src: '/images/open-road-mountains.jpg',   label: 'Endless Road',         location: 'Route 66',           tag: 'Road Trip' },
+  { src: '/images/mountain-road-romania.webp',label: 'Transfăgărășan',       location: 'Romania',            tag: 'Road Trip' },
+  { src: '/images/autumn-road.jpg',           label: 'Fall Colors',          location: 'Appalachian Trail',  tag: 'Road Trip' },
+  { src: '/images/rider-mountain-night.jpg',  label: 'Night Rider',          location: 'Mountain Road',      tag: 'Community' },
+  { src: '/images/pov-coastal-road.jpg',      label: 'Rider POV',            location: 'Coastal Highway',    tag: 'Community' },
+  { src: '/images/pexels-road-2.jpg',         label: 'Local Ride',           location: 'Various',            tag: 'Community' },
+  { src: '/images/pexels-road-3.jpg',         label: 'Bike Night',           location: 'Various',            tag: 'Community' },
+  { src: '/images/ktm-forest-road.jpg',       label: 'KTM in the Wild',      location: 'Forest Road',        tag: 'Show'      },
+  { src: '/images/desert-scrambler.jpg',      label: 'Desert Scrambler',     location: 'Mojave Desert, CA',  tag: 'Show'      },
+  { src: '/images/sport-rider-lean.jpg',      label: 'Full Lean',            location: 'Track Day',          tag: 'Show'      },
 ];
 ---
 
@@ -27,12 +33,13 @@ const events = [
   <!-- ── Filter bar ─────────────────────────── -->
   <div class="filter-bar">
     <div class="container filter-inner">
-      <span class="filter-label">Filter by type:</span>
-      <div class="filters" id="filters">
+      <span class="filter-label">Filter:</span>
+      <div class="filters">
         {['All', 'Rally', 'Road Trip', 'Community', 'Show'].map(f => (
           <button class:list={['filter-btn', { active: f === 'All' }]} data-filter={f}>{f}</button>
         ))}
       </div>
+      <span class="photo-count" id="photo-count">{photos.length} photos</span>
     </div>
   </div>
 
@@ -40,19 +47,22 @@ const events = [
   <section class="section gallery-section">
     <div class="container">
       <div class="gallery-grid" id="gallery-grid">
-        {events.map((e, i) => (
-          <div class="gallery-item" data-tag={e.tag}>
+        {photos.map(p => (
+          <div class="gallery-item" data-tag={p.tag}>
             <div class="gallery-img">
-              <div class="img-placeholder">
-                <i class="ti ti-camera"></i>
-              </div>
+              <img
+                src={p.src}
+                alt={p.label}
+                loading="lazy"
+                decoding="async"
+              />
               <div class="gallery-overlay">
-                <span class="overlay-tag">{e.tag}</span>
+                <span class="overlay-tag">{p.tag}</span>
               </div>
             </div>
             <div class="gallery-caption">
-              <span class="caption-title">{e.label}</span>
-              <span class="caption-loc"><i class="ti ti-map-pin"></i>{e.location}</span>
+              <span class="caption-title">{p.label}</span>
+              <span class="caption-loc"><i class="ti ti-map-pin"></i>{p.location}</span>
             </div>
           </div>
         ))}
@@ -65,7 +75,7 @@ const events = [
     <div class="container submit-inner">
       <div class="submit-text">
         <h3 class="submit-title">ARE YOU A RIDER WITH PHOTOS TO SHARE?</h3>
-        <p>If you're in the BrandedBikers network and want to see your ride featured here, submit your photos through the rider portal or reach out directly.</p>
+        <p>If you're in the BrandedBikers network and want to see your ride featured here, reach out directly.</p>
       </div>
       <a href="/contact" class="btn btn-primary">Submit Your Photos</a>
     </div>
@@ -76,6 +86,7 @@ const events = [
 <script>
   const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
   const items = document.querySelectorAll<HTMLElement>('.gallery-item');
+  const countEl = document.getElementById('photo-count');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -83,16 +94,18 @@ const events = [
       btn.classList.add('active');
 
       const filter = btn.dataset.filter ?? 'All';
+      let visible = 0;
       items.forEach(item => {
         const show = filter === 'All' || item.dataset.tag === filter;
         item.style.display = show ? '' : 'none';
+        if (show) visible++;
       });
+      if (countEl) countEl.textContent = `${visible} photo${visible !== 1 ? 's' : ''}`;
     });
   });
 </script>
 
 <style>
-  /* Filter bar */
   .filter-bar {
     background: var(--bg-card);
     border-bottom: 1px solid var(--border);
@@ -135,13 +148,20 @@ const events = [
     color: var(--white);
   }
 
-  /* Gallery */
+  .photo-count {
+    margin-left: auto;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-family: var(--font-display);
+  }
+
   .gallery-section { padding-top: 3rem; }
 
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 8px;
   }
 
   .gallery-item { display: flex; flex-direction: column; }
@@ -153,18 +173,15 @@ const events = [
     background: var(--bg-card);
   }
 
-  .img-placeholder {
+  .gallery-img img {
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    color: var(--border);
-    transition: color 0.2s;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
   }
 
-  .gallery-item:hover .img-placeholder { color: var(--accent); }
+  .gallery-item:hover .gallery-img img { transform: scale(1.04); }
 
   .gallery-overlay {
     position: absolute;
@@ -210,7 +227,6 @@ const events = [
 
   .caption-loc i { font-size: 12px; color: var(--accent); }
 
-  /* Submit section */
   .submit-section {
     background: var(--bg-dark);
     border-top: 1px solid var(--border);
@@ -240,6 +256,7 @@ const events = [
   @media (max-width: 768px) {
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .submit-inner { flex-direction: column; }
+    .photo-count { margin-left: 0; }
   }
 
   @media (max-width: 480px) {

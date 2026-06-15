@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Authentic Biker Marketing">
 
   <!-- ── Hero ─────────────────────────────── -->
-  <section class="hero">
+  <section class="hero" style="background-image: url('/images/rider-mountain-night.jpg');">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <p class="section-label">The Real Deal</p>
@@ -115,12 +115,16 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="section-title">SEE IT IN <span>ACTION</span></h2>
       <p class="gallery-sub">Real riders. Real events. Real impact.</p>
       <div class="gallery-grid">
-        {['Sturgis Rally', 'Route 66', 'Bike Night', 'Gear Detail', 'Mountain Run', 'Daytona'].map((label, i) => (
+        {[
+          { src: '/images/harley-urban.jpg',         alt: 'Street Run' },
+          { src: '/images/desert-highway.jpg',        alt: 'Desert Highway' },
+          { src: '/images/aerial-mountain-rider.jpg', alt: 'Mountain Pass' },
+          { src: '/images/autumn-road.jpg',           alt: 'Fall Colors' },
+          { src: '/images/sport-rider-lean.jpg',      alt: 'Full Lean' },
+          { src: '/images/desert-scrambler.jpg',      alt: 'Desert Scrambler' },
+        ].map(img => (
           <div class="gallery-thumb">
-            <div class="gallery-placeholder">
-              <i class="ti ti-camera"></i>
-              <span>{label}</span>
-            </div>
+            <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
           </div>
         ))}
       </div>
@@ -144,7 +148,9 @@ import Layout from '../layouts/Layout.astro';
   /* Hero */
   .hero {
     position: relative;
-    background: var(--bg-dark);
+    background-color: var(--bg-dark);
+    background-size: cover;
+    background-position: center 30%;
     min-height: 86vh;
     display: flex;
     align-items: center;
@@ -155,7 +161,8 @@ import Layout from '../layouts/Layout.astro';
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(212,99,58,0.08) 0%, transparent 65%);
+    background: linear-gradient(to right, rgba(10,10,10,0.85) 40%, rgba(10,10,10,0.4) 100%),
+                radial-gradient(ellipse at 70% 50%, rgba(212,99,58,0.08) 0%, transparent 65%);
     pointer-events: none;
   }
 
@@ -317,7 +324,21 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 2rem;
   }
 
-  .gallery-thumb { aspect-ratio: 4/3; overflow: hidden; }
+  .gallery-thumb {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--bg-card);
+  }
+
+  .gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-thumb:hover img { transform: scale(1.05); }
 
   .gallery-placeholder {
     width: 100%;
