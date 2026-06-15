@@ -13,7 +13,7 @@ const current = Astro.url.pathname;
 <nav class="nav">
   <div class="container nav-inner">
     <a href="/" class="nav-brand">
-      <img src="https://www.brandedbikers.com/media/BBNoBG.png" alt="BrandedBikers" width="40" height="40" />
+      <img src="/BBNoBG.png" alt="BrandedBikers" width="40" height="40" />
       <span>BRANDEDBIKERS</span>
     </a>
 
@@ -68,7 +68,7 @@ const current = Astro.url.pathname;
     color: var(--text);
   }
 
-  .nav-brand img { width: 36px; height: 36px; object-fit: contain; }
+  .nav-brand img { width: 36px; height: 36px; object-fit: contain; mix-blend-mode: lighten; }
 
   .nav-links {
     display: flex;
