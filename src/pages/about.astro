@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About" description="BrandedBikers is the authentic biker marketing platform connecting brands with real riders across America.">
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Who We Are</span>
+      <h1 class="section-title">ABOUT <span>BRANDEDBIKERS</span></h1>
+      <p>Built by riders, for brands that want to go where the culture actually lives.</p>
+    </div>
+  </div>
+
+  <!-- ── Mission ───────────────────────────── -->
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <span class="section-label">Our Mission</span>
+        <h2 class="section-title">MARKETING THAT <span>RIDES</span></h2>
+        <p class="body-text">
+          BrandedBikers was built on a simple idea: the most powerful marketing happens when real people — people who are already part of a community — carry your brand with them everywhere they go.
+        </p>
+        <p class="body-text">
+          We connect companies with verified riders across America who wear branded gear on their everyday rides, at major rallies, and everywhere in between. No fake followers. No staged photo shoots. No manufactured credibility.
+        </p>
+        <p class="body-text">
+          Just your brand on the back of someone who rides every week, shows up to Sturgis, and is respected in the community they're part of.
+        </p>
+      </div>
+      <div class="brand-block">
+        <img
+          src="https://www.brandedbikers.com/media/BBNoBG.png"
+          alt="BrandedBikers"
+          class="about-logo"
+        />
+        <div class="tagline-block">
+          <p class="tagline-text">YOUR BRAND.</p>
+          <p class="tagline-text accent">THEIR BACKS.</p>
+          <p class="tagline-text">EVERYWHERE THAT MATTERS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Values ────────────────────────────── -->
+  <section class="section values-section">
+    <div class="container">
+      <span class="section-label">What We Stand For</span>
+      <h2 class="section-title">OUR <span>VALUES</span></h2>
+      <div class="values-grid">
+        {[
+          {
+            icon: 'ti-shield-check',
+            title: 'AUTHENTICITY FIRST',
+            text: 'Every rider in our network is a real member of the riding community. We don\'t recruit people to pretend — we find people who are already there.',
+          },
+          {
+            icon: 'ti-eye-check',
+            title: 'FULL ACCOUNTABILITY',
+            text: 'Every mile is verified. Every photo is reviewed. Every route is documented. Our clients know exactly what they\'re paying for because we make it provable.',
+          },
+          {
+            icon: 'ti-handshake',
+            title: 'FAIR TO RIDERS',
+            text: 'Our riders are partners, not props. We set clear expectations, pay fairly, and treat the people carrying our clients\' brands with the respect they deserve.',
+          },
+          {
+            icon: 'ti-trending-up',
+            title: 'RESULTS THAT MATTER',
+            text: 'We don\'t chase vanity metrics. Impressions, mileage, and reach are meaningful only when tied to real exposure in front of real people who actually care.',
+          },
+        ].map(v => (
+          <div class="value-card">
+            <i class={`ti ${v.icon} value-icon`}></i>
+            <h3 class="value-title">{v.title}</h3>
+            <p class="value-text">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats ─────────────────────────────── -->
+  <section class="section stats-section">
+    <div class="container">
+      <span class="section-label">By the Numbers</span>
+      <h2 class="section-title">THE NETWORK <span>AT A GLANCE</span></h2>
+      <div class="stats-grid">
+        {[
+          { num: '10K+', label: 'Verified Riders', sub: 'Across all 50 states' },
+          { num: '50+', label: 'Active Campaigns', sub: 'Running at any given time' },
+          { num: '12', label: 'States Targeted', sub: 'In current campaigns' },
+          { num: '4.9', label: 'Client Rating', sub: 'Average satisfaction score' },
+        ].map(s => (
+          <div class="stat-card">
+            <div class="stat-num">{s.num}</div>
+            <div class="stat-label">{s.label}</div>
+            <div class="stat-sub">{s.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────── -->
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <span class="section-label">Work With Us</span>
+      <h2 class="section-title">READY TO PUT YOUR BRAND<br /><span>ON THE ROAD?</span></h2>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">Start Your Campaign</a>
+        <a href="/how-it-works" class="btn btn-ghost">Learn How It Works</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .body-text {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .brand-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    background: var(--bg-card);
+    padding: 3rem 2rem;
+    border-top: 3px solid var(--accent);
+  }
+
+  .about-logo { width: 120px; height: 120px; object-fit: contain; }
+
+  .tagline-block { text-align: center; }
+
+  .tagline-text {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: 2px;
+    line-height: 1.4;
+  }
+
+  .tagline-text.accent { color: var(--accent); }
+
+  /* Values */
+  .values-section { background: var(--bg-dark); }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .value-card {
+    background: var(--bg-card);
+    padding: 1.75rem;
+    border-left: 3px solid var(--accent);
+  }
+
+  .value-icon { font-size: 28px; color: var(--accent); display: block; margin-bottom: 0.75rem; }
+
+  .value-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.6rem;
+  }
+
+  .value-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+
+  /* Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 2.5rem;
+    border: 1px solid var(--border);
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 52px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .stat-sub { font-size: 11.5px; color: var(--text-muted); }
+
+  /* CTA */
+  .cta-section { background: var(--bg-dark); border-top: 3px solid var(--accent); padding: 5rem 0; }
+  .cta-inner { text-align: center; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+    .values-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+</style>

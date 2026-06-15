@@ -1,0 +1,373 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Authentic Biker Marketing">
+
+  <!-- ── Hero ─────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="section-label">The Real Deal</p>
+      <h1 class="hero-headline">
+        Authentic<br /><span>Biker Marketing</span>
+      </h1>
+      <p class="hero-tagline">YOUR BRAND. THEIR BACKS. EVERYWHERE THAT MATTERS.</p>
+      <p class="hero-body">
+        Connect with riders across America for brand exposure at rallies,
+        rides, and open road venues — no paid actors, no fake audiences.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact" class="btn btn-primary">Start Your Campaign</a>
+        <a href="/how-it-works" class="btn btn-ghost">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats bar ─────────────────────────── -->
+  <section class="stats-bar">
+    <div class="container stats-inner">
+      {[
+        { number: '50+', label: 'Active Campaigns' },
+        { number: '12',  label: 'States Covered' },
+        { number: '10K+',label: 'Rider Network' },
+        { number: '4.9', label: 'Client Rating' },
+      ].map(s => (
+        <div class="stat">
+          <span class="stat-number">{s.number}</span>
+          <span class="stat-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Why BrandedBikers ──────────────────── -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Why Us</span>
+      <h2 class="section-title">MARKETING THAT<br /><span>MOVES</span></h2>
+      <div class="pillars">
+        {[
+          {
+            icon: 'ti-shield-check',
+            title: 'AUTHENTIC MARKETING',
+            text: 'Real riders, real communities. No paid endorsements, no forced placements — just genuine brand presence among people who actually live the lifestyle.',
+          },
+          {
+            icon: 'ti-eye',
+            title: 'HIGH-IMPACT VISIBILITY',
+            text: 'From Sturgis and Daytona to local meetups and weekend rides, your brand goes where the culture is — in front of engaged, passionate audiences.',
+          },
+          {
+            icon: 'ti-map',
+            title: 'NATIONWIDE REACH',
+            text: 'Our rider network spans all 50 states. Run a hyper-local campaign in one city or a national rollout across every major rally — we scale with you.',
+          },
+        ].map(p => (
+          <div class="pillar">
+            <div class="pillar-icon"><i class={`ti ${p.icon}`}></i></div>
+            <h3 class="pillar-title">{p.title}</h3>
+            <p class="pillar-text">{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works preview ───────────────── -->
+  <section class="section how-preview">
+    <div class="container">
+      <span class="section-label">The Process</span>
+      <h2 class="section-title">FROM CONCEPT TO<br /><span>OPEN ROAD</span></h2>
+      <div class="steps">
+        {[
+          {
+            num: '01',
+            title: 'DESIGN YOUR CAMPAIGN',
+            text: 'Define your goals, target regions, campaign duration, and branded gear. We handle sourcing and fulfillment.',
+          },
+          {
+            num: '02',
+            title: 'MATCH WITH RIDERS',
+            text: 'We pair your campaign with verified riders in your target areas — real community members who ride regularly.',
+          },
+          {
+            num: '03',
+            title: 'BRAND HITS THE ROAD',
+            text: 'Your gear goes out. Riders document their miles, routes, and photos. You get verified reports with every submission.',
+          },
+        ].map(s => (
+          <div class="step">
+            <div class="step-num">{s.num}</div>
+            <h3 class="step-title">{s.title}</h3>
+            <p class="step-text">{s.text}</p>
+          </div>
+        ))}
+      </div>
+      <a href="/how-it-works" class="btn btn-ghost">See the Full Process</a>
+    </div>
+  </section>
+
+  <!-- ── Gallery teaser ─────────────────────── -->
+  <section class="section gallery-teaser">
+    <div class="container">
+      <span class="section-label">Gallery</span>
+      <h2 class="section-title">SEE IT IN <span>ACTION</span></h2>
+      <p class="gallery-sub">Real riders. Real events. Real impact.</p>
+      <div class="gallery-grid">
+        {['Sturgis Rally', 'Route 66', 'Bike Night', 'Gear Detail', 'Mountain Run', 'Daytona'].map((label, i) => (
+          <div class="gallery-thumb">
+            <div class="gallery-placeholder">
+              <i class="ti ti-camera"></i>
+              <span>{label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <a href="/gallery" class="btn btn-ghost">View Full Gallery</a>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────── -->
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <span class="section-label">Get Started</span>
+      <h2 class="section-title">READY TO<br /><span>STAND OUT?</span></h2>
+      <p class="cta-body">Join the brands choosing authentic marketing over traditional advertising. Your brand belongs on the road.</p>
+      <a href="/contact" class="btn btn-primary">Start Your Campaign</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    background: var(--bg-dark);
+    min-height: 86vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid var(--accent);
+    overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(212,99,58,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 1; padding: 5rem 2rem; }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 96px);
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .hero-headline span { color: var(--accent); }
+
+  .hero-tagline {
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-body {
+    font-size: 16px;
+    color: var(--text);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* Stats bar */
+  .stats-bar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem 0;
+    border-right: 0.5px solid var(--border);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 44px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* Pillars */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .pillar {
+    background: var(--bg-card);
+    border-top: 3px solid var(--accent);
+    padding: 2rem 1.5rem;
+  }
+
+  .pillar-icon {
+    font-size: 32px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .pillar-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+
+  /* How It Works preview */
+  .how-preview { background: var(--bg-dark); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 2.5rem 0 2rem;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    left: calc(33.33% / 2);
+    right: calc(33.33% / 2);
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  .step { padding: 0 2rem 0 0; position: relative; }
+
+  .step:last-child { padding-right: 0; }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.6rem;
+  }
+
+  .step-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+
+  /* Gallery teaser */
+  .gallery-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-thumb { aspect-ratio: 4/3; overflow: hidden; }
+
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .gallery-placeholder:hover { border-color: var(--accent); color: var(--accent); }
+  .gallery-placeholder i { font-size: 28px; }
+  .gallery-placeholder span { font-family: var(--font-display); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--bg-dark);
+    border-top: 3px solid var(--accent);
+    padding: 5rem 0;
+  }
+
+  .cta-inner { text-align: center; }
+  .cta-inner .section-title { font-size: 56px; }
+
+  .cta-body {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    line-height: 1.75;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .pillars { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .steps::before { display: none; }
+    .step { padding: 0 0 2rem; border-bottom: 0.5px solid var(--border); margin-bottom: 2rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-inner .section-title { font-size: 36px; }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+</style>

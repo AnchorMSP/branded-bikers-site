@@ -1,0 +1,142 @@
+---
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <img src="https://www.brandedbikers.com/media/BBNoBG.png" alt="BrandedBikers" width="36" height="36" />
+        <span>BRANDEDBIKERS</span>
+      </div>
+      <p class="footer-desc">Authentic biker marketing putting your brand on rider backs across America.</p>
+      <p class="footer-status"><span class="status-dot"></span> Currently accepting campaigns</p>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-heading">Company</p>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/how-it-works">How It Works</a></li>
+        <li><a href="/rider-program">Rider Program</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-heading">Resources</p>
+      <ul>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-heading">Get Started</p>
+      <a href="/contact" class="btn btn-primary footer-cta">Start Your Campaign</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© {new Date().getFullYear()} BrandedBikers. All rights reserved.</span>
+      <span class="footer-tagline">YOUR BRAND. THEIR BACKS. EVERYWHERE THAT MATTERS.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    padding: 3.5rem 2rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-brand img { width: 32px; height: 32px; object-fit: contain; }
+
+  .footer-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    max-width: 260px;
+  }
+
+  .footer-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #5CB85C;
+    flex-shrink: 0;
+  }
+
+  .footer-heading {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .footer-col ul a {
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: color 0.15s;
+  }
+
+  .footer-col ul a:hover { color: var(--text); }
+
+  .footer-cta { font-size: 13px; padding: 0.6rem 1.25rem; }
+
+  .footer-bottom {
+    border-top: 0.5px solid var(--border);
+    padding: 1.25rem 0;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--border);
+    letter-spacing: 0.5px;
+  }
+
+  .footer-tagline { letter-spacing: 1px; font-family: var(--font-display); font-size: 12px; }
+
+  @media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-bottom-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>

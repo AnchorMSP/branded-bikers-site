@@ -1,0 +1,230 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="How It Works" description="Learn how BrandedBikers connects brands with real riders for authentic marketing campaigns.">
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">The Process</span>
+      <h1 class="section-title">HOW IT <span>WORKS</span></h1>
+      <p>From campaign kickoff to verified results — here's exactly what happens when you ride with BrandedBikers.</p>
+    </div>
+  </div>
+
+  <!-- ── Campaign Steps ─────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Step by Step</span>
+      <h2 class="section-title">FROM CONCEPT TO <span>OPEN ROAD</span></h2>
+
+      <div class="process-steps">
+        {[
+          {
+            num: '01',
+            icon: 'ti-speakerphone',
+            title: 'DESIGN YOUR CAMPAIGN',
+            body: `Define your marketing goals, target regions, and campaign duration. Tell us what you want riders to wear, where you want them seen, and what events matter most. Our team works with you to shape a campaign that fits your brand and budget — from a single city to a coast-to-coast rollout.`,
+            details: ['Brand goal setting', 'Region & event targeting', 'Budget planning', 'Gear design & sourcing'],
+          },
+          {
+            num: '02',
+            icon: 'ti-users',
+            title: 'MATCH WITH RIDERS',
+            body: `We tap into our network of 10,000+ verified riders and match your campaign with those who ride in your target areas. These aren't influencers or paid actors — they're real members of the riding community who attend the events your audience is at.`,
+            details: ['Verified rider profiles', 'Region-based matching', 'Event attendance history', 'Gear sizing & shipping'],
+          },
+          {
+            num: '03',
+            icon: 'ti-road',
+            title: 'GEAR SHIPS, RIDERS RIDE',
+            body: `Branded gear is shipped directly to matched riders. The moment it arrives, your brand starts moving. Riders wear it on daily rides, at rallies, and across events — everywhere the community gathers.`,
+            details: ['Direct-to-rider fulfillment', 'Campaign start confirmation', 'Rider onboarding & handbook', 'Real-time campaign launch'],
+          },
+          {
+            num: '04',
+            icon: 'ti-camera',
+            title: 'DOCUMENT EVERY RIDE',
+            body: `Each rider is required to submit verified miles, GPS route data, and photos in branded gear for every campaign ride. No guesswork, no faked numbers — every submission is reviewed before it counts.`,
+            details: ['GPS-verified mileage', 'Route documentation', 'Minimum 2 photos per ride', 'Submission review process'],
+          },
+          {
+            num: '05',
+            icon: 'ti-chart-bar',
+            title: 'YOU GET VERIFIED REPORTS',
+            body: `At the end of each campaign period, you receive a full report: total miles ridden, regions covered, events attended, photo documentation, and a summary of brand exposure. Real data. Real accountability.`,
+            details: ['Mileage & coverage summary', 'Photo archive', 'Event attendance log', 'Campaign performance review'],
+          },
+        ].map((step, i) => (
+          <div class="process-step">
+            <div class="step-aside">
+              <div class="step-num">{step.num}</div>
+              <div class="step-connector"></div>
+            </div>
+            <div class="step-content">
+              <div class="step-icon"><i class={`ti ${step.icon}`}></i></div>
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-body">{step.body}</p>
+              <ul class="step-details">
+                {step.details.map(d => <li><i class="ti ti-check"></i>{d}</li>)}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── For Riders vs Brands ───────────────── -->
+  <section class="section two-col-section">
+    <div class="container two-col">
+      <div class="col-card">
+        <i class="ti ti-building-store col-icon"></i>
+        <h3 class="col-title">FOR BRANDS</h3>
+        <hr class="divider" />
+        <ul class="col-list">
+          <li><i class="ti ti-check"></i>Authentic exposure at real events</li>
+          <li><i class="ti ti-check"></i>No influencer fees or fake engagement</li>
+          <li><i class="ti ti-check"></i>Verified mileage and photo reports</li>
+          <li><i class="ti ti-check"></i>Scalable from local to national</li>
+          <li><i class="ti ti-check"></i>Direct access to biker demographics</li>
+        </ul>
+        <a href="/contact" class="btn btn-primary col-btn">Start a Campaign</a>
+      </div>
+
+      <div class="col-card">
+        <i class="ti ti-motorbike col-icon"></i>
+        <h3 class="col-title">FOR RIDERS</h3>
+        <hr class="divider" />
+        <ul class="col-list">
+          <li><i class="ti ti-check"></i>Get paid to ride and represent</li>
+          <li><i class="ti ti-check"></i>Free branded gear for your campaigns</li>
+          <li><i class="ti ti-check"></i>Flexible — ride your own routes</li>
+          <li><i class="ti ti-check"></i>Be part of a verified rider network</li>
+          <li><i class="ti ti-check"></i>Clear rules, fair compensation</li>
+        </ul>
+        <a href="/rider-program" class="btn btn-ghost col-btn">View Rider Program</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────── -->
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <span class="section-label">Ready?</span>
+      <h2 class="section-title">LET'S BUILD YOUR <span>CAMPAIGN</span></h2>
+      <a href="/contact" class="btn btn-primary">Get In Touch</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .process-steps { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .step-aside { display: flex; flex-direction: column; align-items: center; }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .step-connector {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    margin-top: 8px;
+  }
+
+  .process-step:last-child .step-connector { display: none; }
+
+  .step-content {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+  }
+
+  .step-icon { font-size: 28px; color: var(--accent); margin-bottom: 0.75rem; }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .step-body { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem; }
+
+  .step-details { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+
+  .step-details li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--text);
+  }
+
+  .step-details li i { color: var(--accent); font-size: 14px; }
+
+  /* Two col */
+  .two-col-section { background: var(--bg-dark); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .col-card {
+    background: var(--bg-card);
+    padding: 2rem 1.75rem;
+    border-top: 3px solid var(--accent);
+  }
+
+  .col-icon { font-size: 32px; color: var(--accent); margin-bottom: 0.75rem; display: block; }
+
+  .col-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .col-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+
+  .col-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .col-list li i { color: var(--accent); flex-shrink: 0; }
+
+  .col-btn { margin-top: auto; }
+
+  /* CTA */
+  .cta-section { background: var(--bg-dark); border-top: 3px solid var(--accent); padding: 5rem 0; }
+  .cta-inner { text-align: center; }
+
+  @media (max-width: 640px) {
+    .process-step { grid-template-columns: 1fr; }
+    .step-aside { flex-direction: row; gap: 1rem; margin-bottom: 1rem; }
+    .step-connector { display: none; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+</style>

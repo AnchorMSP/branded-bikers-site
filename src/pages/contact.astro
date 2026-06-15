@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="Start a BrandedBikers campaign or get in touch with our team.">
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Get In Touch</span>
+      <h1 class="section-title">LET'S BUILD YOUR <span>CAMPAIGN</span></h1>
+      <p>Tell us about your brand and goals — we'll put together the right campaign for you.</p>
+    </div>
+  </div>
+
+  <section class="section contact-section">
+    <div class="container contact-layout">
+
+      <!-- ── Form ──────────────────────────── -->
+      <div class="form-col">
+        <span class="section-label">Send a Message</span>
+        <h2 class="form-title">START YOUR CAMPAIGN</h2>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@company.com" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="company">Company / Brand</label>
+            <input type="text" id="company" name="company" placeholder="Brand or company name" />
+          </div>
+
+          <div class="field">
+            <label for="type">I am a...</label>
+            <select id="type" name="type" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="brand">Brand / Marketing Team</option>
+              <option value="rider">Rider interested in joining</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="regions">Target Regions (if applicable)</label>
+            <input type="text" id="regions" name="regions" placeholder="e.g. Southeast, Texas, nationwide..." />
+          </div>
+
+          <div class="field">
+            <label for="message">Tell us about your goals</label>
+            <textarea id="message" name="message" rows="5" placeholder="Campaign goals, target audience, timeline, questions..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+
+          <div class="form-notice" id="form-notice" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- ── Info ──────────────────────────── -->
+      <aside class="info-col">
+        <div class="info-card">
+          <span class="section-label">Direct Contact</span>
+          <div class="contact-item">
+            <i class="ti ti-mail"></i>
+            <div>
+              <span class="contact-item-label">Email</span>
+              <a href="mailto:info@brandedbikers.com" class="contact-item-value">info@brandedbikers.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="ti ti-world"></i>
+            <div>
+              <span class="contact-item-label">Website</span>
+              <span class="contact-item-value">brandedbikers.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <span class="section-label">Response Time</span>
+          <p class="info-text">We typically respond to campaign inquiries within <strong>1–2 business days</strong>. For urgent requests, mention it in your message.</p>
+        </div>
+
+        <div class="info-card accent-card">
+          <i class="ti ti-motorbike card-icon"></i>
+          <p class="card-label">CURRENTLY ACCEPTING CAMPAIGNS</p>
+          <p class="card-sub">Slots fill up around major rally season. Contact early to secure your dates.</p>
+        </div>
+
+        <div class="info-card">
+          <span class="section-label">Rider Inquiries</span>
+          <p class="info-text">Interested in joining the rider network? Select "Rider" in the form and tell us about your riding history and region.</p>
+          <a href="/rider-program" class="btn btn-ghost rider-link">View Rider Program</a>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const notice = document.getElementById('form-notice')!;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const filled = ['name', 'email', 'message'].every(k => (data.get(k) as string)?.trim());
+
+    if (!filled) {
+      notice.textContent = 'Please fill in all required fields.';
+      notice.className = 'form-notice error';
+      return;
+    }
+
+    notice.textContent = 'Thanks! We\'ll be in touch within 1–2 business days.';
+    notice.className = 'form-notice success';
+    form.reset();
+  });
+</script>
+
+<style>
+  .contact-section { padding-top: 3rem; }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Form */
+  .form-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin: 0.5rem 0 1.75rem;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+
+  label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-family: var(--font-display);
+  }
+
+  input, select, textarea {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 0.65rem 0.9rem;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+
+  input::placeholder, textarea::placeholder { color: var(--border-dim); }
+
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+
+  select { appearance: none; cursor: pointer; }
+
+  textarea { resize: vertical; min-height: 120px; }
+
+  .submit-btn { align-self: flex-start; margin-top: 0.5rem; }
+
+  .form-notice {
+    font-size: 13px;
+    padding: 0.5rem 0;
+    min-height: 1.5rem;
+  }
+
+  .form-notice.success { color: #5CB85C; }
+  .form-notice.error { color: var(--accent); }
+
+  /* Info col */
+  .info-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    padding: 1.25rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-card .section-label { display: block; margin-bottom: 0.75rem; }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .contact-item i {
+    font-size: 20px;
+    color: var(--accent);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .contact-item-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .contact-item-value {
+    font-size: 14px;
+    color: var(--text);
+    display: block;
+  }
+
+  a.contact-item-value:hover { color: var(--accent); }
+
+  .info-text {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .info-text strong { color: var(--text); }
+
+  .accent-card {
+    background: #1A0F0A;
+    border-color: var(--accent);
+    text-align: center;
+  }
+
+  .card-icon { font-size: 32px; color: var(--accent); display: block; margin-bottom: 0.5rem; }
+
+  .card-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--white);
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-sub { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  .rider-link { font-size: 13px; padding: 0.5rem 1rem; margin-top: 0.75rem; display: inline-block; }
+
+  @media (max-width: 900px) {
+    .contact-layout { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>

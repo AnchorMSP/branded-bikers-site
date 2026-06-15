@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Rider Program" description="The official BrandedBikers Rider Program handbook — rules, requirements, and what we expect from every brand ambassador.">
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Brand Ambassadors</span>
+      <h1 class="section-title">RIDER <span>PROGRAM</span></h1>
+      <p>Official guidelines for BrandedBikers brand ambassadors. Read before you ride.</p>
+    </div>
+  </div>
+
+  <!-- ── Welcome ───────────────────────────── -->
+  <section class="section">
+    <div class="container narrow">
+      <span class="section-label">Welcome</span>
+      <h2 class="section-title">YOU REPRESENT <span>SOMETHING REAL</span></h2>
+      <p class="intro-text">
+        Welcome to the BrandedBikers rider network. You've been selected because you're the real deal — a genuine member of the riding community, not a paid actor. That authenticity is everything. Our clients' brands are counting on you to show up, ride, and represent with integrity. This page covers what we expect, what we need from you, and what happens if you fall short. Read it. Know it. Live it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Rules of Conduct ───────────────────── -->
+  <section class="section rules-section">
+    <div class="container">
+      <span class="section-label">The Rules</span>
+      <h2 class="section-title">RIDER RULES OF <span>CONDUCT</span></h2>
+      <div class="rules-grid">
+        {[
+          {
+            num: '01',
+            title: 'WEAR YOUR MERCH',
+            text: 'Branded gear must be worn visibly while riding during your campaign period. No stuffing it in a bag. If you\'re on the bike, the brand is on your back.',
+          },
+          {
+            num: '02',
+            title: 'DOCUMENT YOUR RIDES',
+            text: 'Every ride counts only if it\'s verifiable. You must log your mileage and submit your route for each campaign ride. No documentation, no credit.',
+          },
+          {
+            num: '03',
+            title: 'SUBMIT YOUR PHOTOS',
+            text: 'Photos of you in the branded merch are required. Shots should clearly show the gear in natural settings — on the bike, at events, on the road. Staged photos are fine; blurry or gear-hiding photos are not.',
+          },
+          {
+            num: '04',
+            title: 'RESPECT THE BRAND',
+            text: 'You are a direct extension of our client\'s brand. Conduct yourself accordingly at all times while wearing or representing BrandedBikers gear. What you do in the merch reflects on the campaign.',
+          },
+          {
+            num: '05',
+            title: 'MEET YOUR DEADLINES',
+            text: 'Campaign submissions have deadlines. If you can\'t hit them, reach out before they pass — not after. Late or missing submissions affect your standing in the network.',
+          },
+          {
+            num: '06',
+            title: 'COMMUNICATE ISSUES',
+            text: 'If something goes wrong — gear doesn\'t fit, a ride falls through, life happens — contact us. We\'d rather know early and adjust than be left guessing.',
+          },
+        ].map(r => (
+          <div class="rule-card">
+            <div class="rule-num">{r.num}</div>
+            <div class="rule-title">{r.title}</div>
+            <p class="rule-text">{r.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Warning ───────────────────────────── -->
+  <div class="container">
+    <div class="warning-box">
+      <i class="ti ti-alert-triangle warning-icon"></i>
+      <p class="warning-text">
+        <strong>Zero tolerance for dishonesty.</strong> Fabricating miles, submitting fake routes, using photos taken out of context, or misrepresenting your rides in any way will result in immediate removal from the BrandedBikers network, forfeiture of any compensation or gear, and may result in legal action if a campaign client has been materially impacted. We check. We verify. Don't test it.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── Required Submissions ───────────────── -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">What You Owe Us</span>
+      <h2 class="section-title">REQUIRED SUBMISSIONS <span>PER RIDE</span></h2>
+      <div class="deliverables">
+        <div class="deliverable">
+          <i class="ti ti-camera del-icon"></i>
+          <div class="del-title">PHOTOS IN MERCH</div>
+          <p class="del-text">Minimum 2 clear photos per ride clearly showing you wearing the branded gear. Photos must be taken during the actual ride or event — not before or after.</p>
+        </div>
+        <div class="deliverable">
+          <i class="ti ti-road del-icon"></i>
+          <div class="del-title">MILES RIDDEN</div>
+          <p class="del-text">Total mileage for each campaign ride, verified by odometer reading, GPS app screenshot, or ride tracker export. Round numbers with no backup will not be accepted.</p>
+        </div>
+        <div class="deliverable">
+          <i class="ti ti-map-pin del-icon"></i>
+          <div class="del-title">YOUR ROUTE</div>
+          <p class="del-text">Start and end location, with any major stops or events attended. A GPS track, screenshot, or written route description is acceptable. Vague submissions will be returned for clarification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Acknowledgment ────────────────────── -->
+  <section class="section ack-section">
+    <div class="container narrow">
+      <span class="section-label">Sign & Ride</span>
+      <h2 class="section-title">ACKNOWLEDGMENT</h2>
+      <div class="ack-box">
+        <p class="ack-title">RIDER AGREEMENT</p>
+        <p class="ack-text">
+          By signing below, I confirm that I have read and understood the BrandedBikers Rider Program Handbook in full. I agree to comply with all rules and submission requirements outlined above. I understand that providing false information, fabricated mileage, fake photos, or misrepresented routes is grounds for immediate termination from the program and potential legal action. I agree to represent BrandedBikers and its campaign clients with honesty and integrity at all times.
+        </p>
+        <div class="sig-grid">
+          <div class="sig-field">
+            <div class="sig-line"></div>
+            <span class="sig-label">Rider Signature</span>
+          </div>
+          <div class="sig-field">
+            <div class="sig-line"></div>
+            <span class="sig-label">Printed Name</span>
+          </div>
+          <div class="sig-field">
+            <div class="sig-line"></div>
+            <span class="sig-label">Date</span>
+          </div>
+          <div class="sig-field">
+            <div class="sig-line"></div>
+            <span class="sig-label">Campaign / Region</span>
+          </div>
+        </div>
+      </div>
+      <p class="print-note">
+        <i class="ti ti-printer"></i>
+        This agreement is also available as a printable handout — request a copy through <a href="/contact">our contact page</a>.
+      </p>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .narrow { max-width: 720px; }
+
+  .intro-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-top: 1rem;
+  }
+
+  /* Rules */
+  .rules-section { background: var(--bg-dark); }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 2.5rem;
+  }
+
+  .rule-card {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.25rem;
+  }
+
+  .rule-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .rule-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .rule-text { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+  /* Warning */
+  .warning-box {
+    background: #1A0F0A;
+    border: 1px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin: 0 0 3rem;
+  }
+
+  .warning-icon { font-size: 24px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+
+  .warning-text { font-size: 13.5px; color: var(--text); line-height: 1.7; }
+
+  .warning-text strong { color: var(--accent); font-style: italic; }
+
+  /* Deliverables */
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 2.5rem;
+  }
+
+  .deliverable {
+    background: var(--bg-card);
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+  }
+
+  .del-icon { font-size: 30px; color: var(--accent); display: block; margin-bottom: 0.75rem; }
+
+  .del-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.6rem;
+  }
+
+  .del-text { font-size: 12.5px; color: var(--text-muted); line-height: 1.65; }
+
+  /* Acknowledgment */
+  .ack-section { background: var(--bg-dark); }
+
+  .ack-box {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .ack-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+  }
+
+  .ack-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  .sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+
+  .sig-field { display: flex; flex-direction: column; gap: 6px; }
+
+  .sig-line { border-top: 0.5px solid var(--border-dim); padding-top: 6px; }
+
+  .sig-label {
+    font-size: 11px;
+    color: var(--border-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .print-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 1.25rem;
+    font-style: italic;
+  }
+
+  .print-note a { color: var(--accent); text-decoration: underline; }
+  .print-note i { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .rules-grid { grid-template-columns: 1fr; }
+    .deliverables { grid-template-columns: 1fr; }
+    .sig-grid { grid-template-columns: 1fr; }
+  }
+</style>
