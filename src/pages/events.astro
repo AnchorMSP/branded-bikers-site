@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const events = [
+  {
+    name: 'Sturgis Motorcycle Rally',
+    location: 'Sturgis, SD',
+    dates: 'August 4–13, 2025',
+    type: 'Rally',
+    status: 'upcoming',
+    description: 'The largest motorcycle rally in the world. 500,000+ riders descend on the Black Hills — the single biggest brand exposure opportunity in the BrandedBikers calendar.',
+    bb: true,
+  },
+  {
+    name: 'Daytona Bike Week',
+    location: 'Daytona Beach, FL',
+    dates: 'March 7–16, 2025',
+    type: 'Rally',
+    status: 'past',
+    description: 'Over 500,000 attendees across ten days of racing, riding, and events on Florida\'s east coast. A cornerstone of the spring campaign season.',
+    bb: true,
+  },
+  {
+    name: 'Laconia Motorcycle Week',
+    location: 'Laconia, NH',
+    dates: 'June 14–22, 2025',
+    type: 'Rally',
+    status: 'upcoming',
+    description: 'America\'s oldest motorcycle rally. Draws 300,000+ riders to New Hampshire\'s Lakes Region every summer.',
+    bb: true,
+  },
+  {
+    name: 'Arizona Bike Week',
+    location: 'Scottsdale, AZ',
+    dates: 'April 2–6, 2025',
+    type: 'Rally',
+    status: 'past',
+    description: 'The Southwest\'s premier motorcycle gathering at WestWorld of Scottsdale, drawing 100,000+ attendees from across the region.',
+    bb: true,
+  },
+  {
+    name: 'Thunder in the Valley',
+    location: 'Johnstown, PA',
+    dates: 'July 10–13, 2025',
+    type: 'Rally',
+    status: 'upcoming',
+    description: 'One of the East Coast\'s largest rallies with 100,000+ riders converging on Cambria County.',
+    bb: false,
+  },
+  {
+    name: 'Bikes on the Boardwalk',
+    location: 'Ocean City, MD',
+    dates: 'October 3–5, 2025',
+    type: 'Show',
+    status: 'upcoming',
+    description: 'Mid-Atlantic\'s top fall bike show on the Ocean City boardwalk. Popular destination for East Coast riders wrapping up the riding season.',
+    bb: false,
+  },
+  {
+    name: 'Myrtle Beach Bike Week (Spring)',
+    location: 'Myrtle Beach, SC',
+    dates: 'May 9–18, 2025',
+    type: 'Rally',
+    status: 'past',
+    description: 'The Grand Strand draws 300,000+ riders to the Carolina coast every spring. One of the biggest rally weeks on the East Coast.',
+    bb: true,
+  },
+  {
+    name: 'Myrtle Beach Bike Week (Fall)',
+    location: 'Myrtle Beach, SC',
+    dates: 'October 10–19, 2025',
+    type: 'Rally',
+    status: 'upcoming',
+    description: 'The fall edition of the Grand Strand rally — equally massive, cooler weather, and one of the most attended events of the season.',
+    bb: true,
+  },
+  {
+    name: 'Route 66 Fall Run',
+    location: 'Chicago, IL → Santa Monica, CA',
+    dates: 'September 20–28, 2025',
+    type: 'Road Trip',
+    status: 'upcoming',
+    description: 'An organized cross-country run down America\'s most iconic highway. BB riders participate end-to-end, covering eight states over nine days.',
+    bb: true,
+  },
+];
+
+const upcoming = events.filter(e => e.status === 'upcoming');
+const past = events.filter(e => e.status === 'past');
+---
+
+<Layout title="Events" description="BrandedBikers is at the biggest motorcycle rallies and rides in America. See our event calendar and where we'll be next.">
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">On the Calendar</span>
+      <h1 class="section-title">EVENTS & <span>RALLIES</span></h1>
+      <p>Where we ride, where our brands go. BrandedBikers riders show up at the events that matter.</p>
+    </div>
+  </div>
+
+  <!-- ── Upcoming ───────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">What's Ahead</span>
+      <h2 class="section-title">UPCOMING <span>EVENTS</span></h2>
+      <div class="events-list">
+        {upcoming.map(e => (
+          <div class="event-card">
+            <div class="event-meta">
+              <span class="event-type">{e.type}</span>
+              {e.bb && <span class="event-bb"><i class="ti ti-motorbike"></i> BB Riders Present</span>}
+            </div>
+            <div class="event-body">
+              <h3 class="event-name">{e.name}</h3>
+              <div class="event-details">
+                <span><i class="ti ti-map-pin"></i>{e.location}</span>
+                <span><i class="ti ti-calendar"></i>{e.dates}</span>
+              </div>
+              <p class="event-desc">{e.description}</p>
+            </div>
+            <div class="event-status upcoming">UPCOMING</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Past ───────────────────────────────── -->
+  <section class="section past-section">
+    <div class="container">
+      <span class="section-label">Already Ridden</span>
+      <h2 class="section-title">PAST <span>EVENTS</span></h2>
+      <div class="events-list muted">
+        {past.map(e => (
+          <div class="event-card past">
+            <div class="event-meta">
+              <span class="event-type">{e.type}</span>
+              {e.bb && <span class="event-bb"><i class="ti ti-motorbike"></i> BB Riders Present</span>}
+            </div>
+            <div class="event-body">
+              <h3 class="event-name">{e.name}</h3>
+              <div class="event-details">
+                <span><i class="ti ti-map-pin"></i>{e.location}</span>
+                <span><i class="ti ti-calendar"></i>{e.dates}</span>
+              </div>
+              <p class="event-desc">{e.description}</p>
+            </div>
+            <div class="event-status past-tag">COMPLETED</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────── -->
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <span class="section-label">Be There</span>
+      <h2 class="section-title">WANT YOUR BRAND AT <span>THESE EVENTS?</span></h2>
+      <p class="cta-body">Our riders are already going. Let's put your brand on their backs before they leave.</p>
+      <a href="/contact" class="btn btn-primary">Start a Campaign</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .events-list { display: flex; flex-direction: column; gap: 12px; margin-top: 2.5rem; }
+
+  .event-card {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    gap: 0.5rem 1.5rem;
+    position: relative;
+  }
+
+  .event-card.past { border-left-color: var(--border); opacity: 0.7; }
+
+  .event-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    grid-column: 1;
+  }
+
+  .event-type {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    background: rgba(212,99,58,0.1);
+    padding: 2px 8px;
+  }
+
+  .event-card.past .event-type { color: var(--text-muted); background: transparent; border: 1px solid var(--border); }
+
+  .event-bb {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .event-bb i { color: var(--accent); font-size: 13px; }
+
+  .event-body { grid-column: 1; }
+
+  .event-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.4rem;
+  }
+
+  .event-card.past .event-name { color: var(--text-muted); }
+
+  .event-details {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .event-details span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .event-details i { color: var(--accent); font-size: 13px; }
+
+  .event-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+
+  .event-status {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+
+  .event-status.upcoming { background: var(--accent); color: var(--white); }
+  .event-status.past-tag { color: var(--border); border: 1px solid var(--border); }
+
+  .past-section { background: var(--bg-dark); }
+
+  .cta-section { background: var(--bg-dark); border-top: 3px solid var(--accent); padding: 5rem 0; }
+  .cta-inner { text-align: center; }
+  .cta-body { font-size: 15px; color: var(--text-muted); max-width: 480px; margin: 0 auto 2rem; line-height: 1.75; }
+
+  @media (max-width: 560px) {
+    .event-card { grid-template-columns: 1fr; }
+    .event-status { grid-column: 1; grid-row: auto; align-self: flex-start; width: fit-content; }
+  }
+</style>

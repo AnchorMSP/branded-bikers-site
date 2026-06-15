@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const brandFaqs = [
+  {
+    q: 'How does a BrandedBikers campaign work?',
+    a: 'You define your campaign goals, target regions, and duration. We match your campaign with verified riders in those areas, ship them branded gear, and they wear it on their rides. Every mile, route, and photo is documented and submitted to you at the end of the campaign.',
+  },
+  {
+    q: 'How much does a campaign cost?',
+    a: 'Pricing depends on the number of riders, campaign duration, target regions, and gear requirements. We build custom quotes for each client. Contact us through our campaign inquiry form to get a tailored estimate.',
+  },
+  {
+    q: 'How do I know riders are actually wearing the gear?',
+    a: 'Every rider is required to submit GPS-verified mileage, route documentation, and a minimum of two photos per ride clearly showing branded gear. All submissions are reviewed before they count toward your campaign. You receive a full report with photo archive at campaign close.',
+  },
+  {
+    q: 'Can I choose which events or regions riders appear at?',
+    a: 'Yes. You can target specific regions, states, or events — from a single local rally to a national rollout across multiple major events simultaneously. We match riders based on their riding history and the events they already attend.',
+  },
+  {
+    q: 'What kind of gear can riders wear?',
+    a: 'Most campaigns use T-shirts, hoodies, vests, or jackets. We work with you on design and handle sourcing and fulfillment directly to riders. The gear needs to be visible while riding — our team reviews designs to make sure they read well in the real world.',
+  },
+  {
+    q: 'What happens if a rider doesn\'t fulfill their campaign obligations?',
+    a: 'Riders who miss submissions, provide unverifiable mileage, or fail to comply with program rules are flagged and removed from the network. You are not charged for unfulfilled deliverables, and we\'ll work to replace the gap with an active rider.',
+  },
+  {
+    q: 'Do you offer campaigns for regional businesses, not just national brands?',
+    a: 'Absolutely. Many of our clients are regional businesses — dealerships, local brands, restaurants, events — that want authentic exposure in a specific city or state. We scale campaigns up or down based on your needs.',
+  },
+];
+
+const riderFaqs = [
+  {
+    q: 'How do I join the BrandedBikers rider network?',
+    a: 'Reach out through our contact page and select "Rider interested in joining." Tell us about your riding history, your region, and the events you typically attend. We\'ll review your profile and reach out when a campaign in your area is a fit.',
+  },
+  {
+    q: 'Do I have to change where I ride or what events I attend?',
+    a: 'No. We match campaigns to riders based on where they already ride. You ride your normal routes and attend your normal events — we just ask that you wear the branded gear and document it.',
+  },
+  {
+    q: 'How am I compensated?',
+    a: 'Compensation varies by campaign. At a minimum, riders keep the branded gear. Many campaigns include additional per-mile or per-event compensation. Specifics are outlined clearly in your campaign agreement before you commit.',
+  },
+  {
+    q: 'What do I have to submit for each ride?',
+    a: 'For every campaign ride you must submit: (1) GPS-verified mileage, (2) start/end route documentation, and (3) a minimum of two photos clearly showing you wearing the branded gear. Submissions with no verification or gear-hidden photos are not accepted.',
+  },
+  {
+    q: 'Can I be in multiple campaigns at once?',
+    a: 'Possibly, depending on the brands involved and whether there are conflicts. Some campaigns have exclusivity requirements — for example, a gear brand may not want you riding for a direct competitor at the same time. This is always disclosed upfront.',
+  },
+  {
+    q: 'What happens if I miss a deadline or can\'t complete a ride?',
+    a: 'Contact us before the deadline, not after. We\'d rather adjust than be left with a gap. Missing deadlines without communication affects your standing in the network and may result in removal from future campaigns.',
+  },
+  {
+    q: 'Is this only for motorcycle riders?',
+    a: 'Currently yes — BrandedBikers is built around the motorcycle and powersports community. Our clients\' brands specifically seek exposure at moto events, rallies, and road culture venues.',
+  },
+];
+---
+
+<Layout title="FAQ" description="Frequently asked questions about BrandedBikers campaigns for brands and riders.">
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Got Questions</span>
+      <h1 class="section-title">FREQUENTLY ASKED <span>QUESTIONS</span></h1>
+      <p>Answers for brands running campaigns and riders looking to join the network.</p>
+    </div>
+  </div>
+
+  <!-- ── Brand FAQs ──────────────────────────── -->
+  <section class="section">
+    <div class="container narrow">
+      <span class="section-label">For Brands</span>
+      <h2 class="section-title">CAMPAIGN <span>QUESTIONS</span></h2>
+      <div class="faq-list" id="brand-faqs">
+        {brandFaqs.map((item, i) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.q}</span>
+              <i class="ti ti-chevron-down faq-icon"></i>
+            </summary>
+            <p class="faq-answer">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Rider FAQs ─────────────────────────── -->
+  <section class="section rider-faq-section">
+    <div class="container narrow">
+      <span class="section-label">For Riders</span>
+      <h2 class="section-title">RIDER NETWORK <span>QUESTIONS</span></h2>
+      <div class="faq-list">
+        {riderFaqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.q}</span>
+              <i class="ti ti-chevron-down faq-icon"></i>
+            </summary>
+            <p class="faq-answer">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Still have questions ───────────────── -->
+  <section class="still-section">
+    <div class="container still-inner">
+      <i class="ti ti-message-circle still-icon"></i>
+      <div>
+        <h3 class="still-title">STILL HAVE QUESTIONS?</h3>
+        <p class="still-text">Reach out directly — we respond to most inquiries within one business day.</p>
+      </div>
+      <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .narrow { max-width: 760px; }
+
+  .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 2px; }
+
+  .faq-item {
+    background: var(--bg-card);
+    border-left: 3px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .faq-item[open] { border-left-color: var(--accent); }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--text);
+    letter-spacing: 0.3px;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+
+  .faq-question:hover { color: var(--white); }
+
+  .faq-icon {
+    font-size: 18px;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .faq-item[open] .faq-icon { transform: rotate(180deg); }
+
+  .faq-answer {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    padding: 0 1.25rem 1.25rem;
+    margin: 0;
+  }
+
+  .rider-faq-section { background: var(--bg-dark); }
+
+  .still-section {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 0;
+  }
+
+  .still-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .still-icon { font-size: 40px; color: var(--accent); flex-shrink: 0; }
+
+  .still-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .still-text { font-size: 13.5px; color: var(--text-muted); }
+
+  .still-inner .btn { margin-left: auto; white-space: nowrap; }
+
+  @media (max-width: 600px) {
+    .still-inner { flex-direction: column; align-items: flex-start; }
+    .still-inner .btn { margin-left: 0; }
+  }
+</style>

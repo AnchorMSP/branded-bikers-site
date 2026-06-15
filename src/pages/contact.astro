@@ -20,6 +20,7 @@ import Layout from '../layouts/Layout.astro';
         <span class="section-label">Send a Message</span>
         <h2 class="form-title">START YOUR CAMPAIGN</h2>
 
+        <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io/new) -->
         <form class="contact-form" id="contact-form" novalidate>
           <div class="field-row">
             <div class="field">
@@ -107,24 +108,51 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
+  // Replace YOUR_FORM_ID below with the ID from formspree.io/new
+  const FORMSPREE_ID = 'YOUR_FORM_ID';
+
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const notice = document.getElementById('form-notice')!;
+  const submitBtn = form?.querySelector<HTMLButtonElement>('.submit-btn');
 
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const data = new FormData(form);
     const filled = ['name', 'email', 'message'].every(k => (data.get(k) as string)?.trim());
 
     if (!filled) {
-      notice.textContent = 'Please fill in all required fields.';
+      notice.textContent = 'Please fill in your name, email, and message.';
       notice.className = 'form-notice error';
       return;
     }
 
-    notice.textContent = 'Thanks! We\'ll be in touch within 1–2 business days.';
-    notice.className = 'form-notice success';
-    form.reset();
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+    notice.textContent = '';
+    notice.className = 'form-notice';
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        notice.textContent = "Thanks! We'll be in touch within 1–2 business days.";
+        notice.className = 'form-notice success';
+        form.reset();
+      } else {
+        const json = await res.json();
+        notice.textContent = json?.errors?.[0]?.message ?? 'Something went wrong. Please try again or email us directly.';
+        notice.className = 'form-notice error';
+      }
+    } catch {
+      notice.textContent = 'Network error. Please email us directly at info@brandedbikers.com';
+      notice.className = 'form-notice error';
+    } finally {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Message'; }
+    }
   });
 </script>
 

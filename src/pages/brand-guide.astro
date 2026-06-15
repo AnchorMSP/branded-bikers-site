@@ -1,0 +1,492 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const colors = [
+  { name: 'Background',    hex: '#2A2A2A', var: '--bg',        dark: false },
+  { name: 'Deep Black',    hex: '#0A0A0A', var: '--bg-dark',   dark: false },
+  { name: 'Card Surface',  hex: '#1A1A1A', var: '--bg-card',   dark: false },
+  { name: 'Ember Orange',  hex: '#D4633A', var: '--accent',    dark: false },
+  { name: 'Parchment',     hex: '#E8DCC4', var: '--text',      dark: true  },
+  { name: 'Muted Tan',     hex: '#A89B8F', var: '--text-muted',dark: true  },
+  { name: 'Border Ash',    hex: '#4A4540', var: '--border',    dark: true  },
+  { name: 'Dim Gray',      hex: '#6B6B6B', var: '--border-dim',dark: true  },
+  { name: 'White',         hex: '#FFFFFF', var: '--white',     dark: true  },
+];
+---
+
+<Layout title="Brand Guide" description="BrandedBikers brand standards — colors, typography, logo usage, and voice guidelines.">
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Brand Standards</span>
+      <h1 class="section-title">BRAND <span>GUIDE</span></h1>
+      <p>Colors, type, logo, and voice — the full BrandedBikers visual system.</p>
+    </div>
+  </div>
+
+  <!-- ── Logo ──────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Identity</span>
+      <h2 class="section-title">LOGO & <span>LOCKUP</span></h2>
+
+      <div class="logo-grid">
+        <div class="logo-sample dark-bg">
+          <img src="https://www.brandedbikers.com/media/BBNoBG.png" alt="BrandedBikers logo" class="logo-img" />
+          <div class="lockup">
+            <span class="lockup-name">BRANDEDBIKERS</span>
+            <span class="lockup-tag">YOUR BRAND. THEIR BACKS. EVERYWHERE THAT MATTERS.</span>
+          </div>
+          <span class="sample-label">Primary — Dark background</span>
+        </div>
+
+        <div class="logo-sample light-bg">
+          <img src="https://www.brandedbikers.com/media/BBNoBG.png" alt="BrandedBikers logo" class="logo-img invert" />
+          <div class="lockup dark-lockup">
+            <span class="lockup-name">BRANDEDBIKERS</span>
+            <span class="lockup-tag">YOUR BRAND. THEIR BACKS. EVERYWHERE THAT MATTERS.</span>
+          </div>
+          <span class="sample-label dark-label">Reversed — Light background</span>
+        </div>
+      </div>
+
+      <div class="logo-rules">
+        <div class="rule-item">
+          <i class="ti ti-check rule-icon ok"></i>
+          <span>Use on dark backgrounds wherever possible</span>
+        </div>
+        <div class="rule-item">
+          <i class="ti ti-check rule-icon ok"></i>
+          <span>Maintain minimum clear space equal to the logo height around all sides</span>
+        </div>
+        <div class="rule-item">
+          <i class="ti ti-check rule-icon ok"></i>
+          <span>Scale proportionally — never stretch or distort</span>
+        </div>
+        <div class="rule-item">
+          <i class="ti ti-x rule-icon no"></i>
+          <span>Do not recolor the logo outside of approved palette</span>
+        </div>
+        <div class="rule-item">
+          <i class="ti ti-x rule-icon no"></i>
+          <span>Do not place on busy or low-contrast backgrounds</span>
+        </div>
+        <div class="rule-item">
+          <i class="ti ti-x rule-icon no"></i>
+          <span>Do not add drop shadows, outlines, or effects</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Colors ─────────────────────────────── -->
+  <section class="section color-section">
+    <div class="container">
+      <span class="section-label">Visual Identity</span>
+      <h2 class="section-title">COLOR <span>PALETTE</span></h2>
+      <div class="color-grid">
+        {colors.map(c => (
+          <div class="color-chip">
+            <div class="chip-swatch" style={`background:${c.hex}`}>
+              <span class:list={['chip-hex', { light: !c.dark }]}>{c.hex}</span>
+            </div>
+            <div class="chip-meta">
+              <span class="chip-name">{c.name}</span>
+              <span class="chip-var">{c.var}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="color-note">
+        <i class="ti ti-info-circle"></i>
+        <p>The <strong>Ember Orange (#D4633A)</strong> is the primary brand accent. Use it for CTAs, key headings, borders, and interactive states. All other colors are supporting neutrals — never use a bright accent that competes with orange.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Typography ────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Type System</span>
+      <h2 class="section-title">TYPOGRAPHY</h2>
+
+      <div class="type-grid">
+        <div class="type-card">
+          <div class="type-sample display-sample">BEBAS NEUE</div>
+          <div class="type-meta">
+            <span class="type-name">Bebas Neue</span>
+            <span class="type-role">Display / Headings / Labels</span>
+            <p class="type-desc">All caps, high impact. Used for every headline, section label, CTA, and navigation element. Never set in mixed or lowercase. Available on Google Fonts.</p>
+            <div class="type-sizes">
+              <div class="type-size-row"><span class="size-label">Hero</span><span class="size-val">72–96px</span></div>
+              <div class="type-size-row"><span class="size-label">H1</span><span class="size-val">42–52px</span></div>
+              <div class="type-size-row"><span class="size-label">H2</span><span class="size-val">26–36px</span></div>
+              <div class="type-size-row"><span class="size-label">H3 / Nav</span><span class="size-val">14–22px</span></div>
+              <div class="type-size-row"><span class="size-label">Label</span><span class="size-val">11px / 3px tracking</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="type-card">
+          <div class="type-sample body-sample">Libre Baskerville — Body copy that reads clean at small sizes, with the texture of print media. Designed for readability at length.</div>
+          <div class="type-meta">
+            <span class="type-name">Libre Baskerville</span>
+            <span class="type-role">Body / Paragraph / Long-form</span>
+            <p class="type-desc">Serif, humanist. Used for all body copy, descriptions, legal text, and longer reads. Weights: Regular (400), Bold (700), Italic (400i). Available on Google Fonts.</p>
+            <div class="type-sizes">
+              <div class="type-size-row"><span class="size-label">Body</span><span class="size-val">14–16px / 1.7 lh</span></div>
+              <div class="type-size-row"><span class="size-label">Small</span><span class="size-val">12–13.5px</span></div>
+              <div class="type-size-row"><span class="size-label">Micro</span><span class="size-val">11px</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Voice & Tone ───────────────────────── -->
+  <section class="section voice-section">
+    <div class="container">
+      <span class="section-label">Communication</span>
+      <h2 class="section-title">VOICE & <span>TONE</span></h2>
+
+      <div class="voice-grid">
+        {[
+          {
+            trait: 'DIRECT',
+            desc: 'No filler. No fluff. Say what you mean and move on. The riding community respects people who get to the point.',
+            do: 'Riders ride. Brands get seen. That\'s it.',
+            dont: 'We are dedicated to providing innovative solutions that leverage authentic community engagement.',
+          },
+          {
+            trait: 'REAL',
+            desc: 'Never corporate, never forced. Write like someone who actually rides. Authenticity is the whole product — the writing should match.',
+            do: 'If you\'re on the bike, the brand is on your back.',
+            dont: 'Our riders serve as brand ambassadors who facilitate organic consumer touchpoints.',
+          },
+          {
+            trait: 'CONFIDENT',
+            desc: 'We\'re not selling softly. We know what we do works and we say so. No hedging, no qualifiers, no "may potentially help."',
+            do: 'We check. We verify. Don\'t test it.',
+            dont: 'We aim to provide what we hope will be useful campaign verification services.',
+          },
+          {
+            trait: 'GROUNDED',
+            desc: 'Speak with earned authority. No hype, no manufactured excitement. The culture doesn\'t respond to manufactured cool.',
+            do: 'Real riders. Real events. Real impact.',
+            dont: 'EPIC brand exposure at INCREDIBLE events with AMAZING riders!!!',
+          },
+        ].map(v => (
+          <div class="voice-card">
+            <div class="voice-trait">{v.trait}</div>
+            <p class="voice-desc">{v.desc}</p>
+            <div class="voice-example do">
+              <span class="ex-label"><i class="ti ti-check"></i> Do</span>
+              <p>"{v.do}"</p>
+            </div>
+            <div class="voice-example dont">
+              <span class="ex-label"><i class="ti ti-x"></i> Don't</span>
+              <p>"{v.dont}"</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Usage ──────────────────────────────── -->
+  <section class="usage-bar">
+    <div class="container usage-inner">
+      <p class="usage-text">Brand assets or usage questions? Reach out before publishing.</p>
+      <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Logo */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo-sample {
+    padding: 3rem 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .dark-bg { background: var(--bg-dark); border: 1px solid var(--border); }
+  .light-bg { background: #E8DCC4; }
+
+  .logo-img { width: 64px; height: 64px; object-fit: contain; }
+  .logo-img.invert { filter: invert(1); }
+
+  .lockup { text-align: center; }
+
+  .lockup-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .lockup-tag {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .dark-lockup .lockup-name { color: #0A0A0A; }
+  .dark-lockup .lockup-tag { color: #4A4540; }
+
+  .sample-label {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 1rem;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .dark-label { color: #4A4540; }
+
+  .logo-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    padding: 0.5rem 0;
+  }
+
+  .rule-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .rule-icon.ok { color: #5CB85C; }
+  .rule-icon.no { color: var(--accent); }
+
+  /* Colors */
+  .color-section { background: var(--bg-dark); }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .color-chip { display: flex; flex-direction: column; }
+
+  .chip-swatch {
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .chip-hex {
+    font-family: monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .chip-hex.light { color: rgba(0,0,0,0.4); }
+
+  .chip-meta {
+    background: var(--bg-card);
+    padding: 0.6rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .chip-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+
+  .chip-var { font-family: monospace; font-size: 11px; color: var(--text-muted); }
+
+  .color-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(212,99,58,0.08);
+    border: 1px solid rgba(212,99,58,0.3);
+    padding: 1rem 1.25rem;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .color-note i { color: var(--accent); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .color-note strong { color: var(--text); }
+
+  /* Type */
+  .type-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .type-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-top: 3px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .type-sample { line-height: 1; }
+
+  .display-sample {
+    font-family: var(--font-display);
+    font-size: 52px;
+    color: var(--white);
+    letter-spacing: 2px;
+  }
+
+  .body-sample {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .type-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .type-role {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .type-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin-bottom: 1rem; }
+
+  .type-sizes { display: flex; flex-direction: column; gap: 4px; }
+
+  .type-size-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 12px;
+  }
+
+  .size-label { color: var(--text-muted); }
+  .size-val { font-family: monospace; color: var(--text); }
+
+  /* Voice */
+  .voice-section { background: var(--bg-dark); }
+
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .voice-card {
+    background: var(--bg-card);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .voice-trait {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+
+  .voice-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+
+  .voice-example {
+    padding: 0.75rem;
+    border-left: 3px solid;
+  }
+
+  .voice-example.do { border-color: #5CB85C; background: rgba(92,184,92,0.05); }
+  .voice-example.dont { border-color: var(--accent); background: rgba(212,99,58,0.05); }
+
+  .ex-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .voice-example.do .ex-label { color: #5CB85C; }
+  .voice-example.dont .ex-label { color: var(--accent); }
+
+  .voice-example p { font-size: 13px; color: var(--text-muted); font-style: italic; margin: 0; line-height: 1.5; }
+
+  /* Usage bar */
+  .usage-bar {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+  }
+
+  .usage-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .usage-text { font-size: 15px; color: var(--text-muted); }
+
+  @media (max-width: 768px) {
+    .logo-grid { grid-template-columns: 1fr; }
+    .logo-rules { grid-template-columns: 1fr; }
+    .color-grid { grid-template-columns: 1fr 1fr; }
+    .type-grid { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .usage-inner { flex-direction: column; }
+  }
+
+  @media (max-width: 480px) {
+    .color-grid { grid-template-columns: 1fr; }
+  }
+</style>

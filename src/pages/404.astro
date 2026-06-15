@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Page Not Found" description="This page doesn't exist.">
+  <section class="not-found">
+    <div class="container nf-inner">
+      <div class="nf-num">404</div>
+      <h1 class="nf-title">WRONG ROAD</h1>
+      <p class="nf-text">This page doesn't exist — or it used to and the route changed. Either way, you took a wrong turn.</p>
+      <div class="nf-actions">
+        <a href="/" class="btn btn-primary">Back to Home</a>
+        <a href="/how-it-works" class="btn btn-ghost">How It Works</a>
+        <a href="/contact" class="btn btn-ghost">Contact Us</a>
+      </div>
+      <div class="nf-divider"></div>
+      <nav class="nf-nav">
+        <a href="/events">Events</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/rider-program">Rider Program</a>
+        <a href="/about">About</a>
+        <a href="/faq">FAQ</a>
+      </nav>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    background: var(--bg-dark);
+  }
+
+  .nf-inner { text-align: center; padding: 4rem 2rem; }
+
+  .nf-num {
+    font-family: var(--font-display);
+    font-size: clamp(120px, 20vw, 200px);
+    color: var(--bg-card);
+    line-height: 1;
+    margin-bottom: -0.1em;
+    letter-spacing: 10px;
+    user-select: none;
+  }
+
+  .nf-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 6vw, 60px);
+    color: var(--accent);
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .nf-text {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 440px;
+    margin: 0 auto 2rem;
+    line-height: 1.75;
+  }
+
+  .nf-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .nf-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto 1.5rem;
+  }
+
+  .nf-nav {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nf-nav a {
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+
+  .nf-nav a:hover { color: var(--accent); }
+</style>
