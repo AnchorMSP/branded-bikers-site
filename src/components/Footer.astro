@@ -47,6 +47,45 @@
       <span class="footer-tagline">YOUR BRAND. THEIR BACKS. EVERYWHERE THAT MATTERS.</span>
     </div>
   </div>
+
+  <div class="watermark-section">
+    <div class="watermark-inner">
+      <span class="watermark-text">Built by</span>
+      <a
+        href="https://egintegrations.com/badge"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watermark-link egi-link"
+        aria-label="Visit EGI Integrations website"
+      >
+        <img
+          src="/watermarks/egi-logo.png"
+          alt="EGI Integrations"
+          width="140"
+          height="46"
+          class="watermark-logo"
+        />
+        <span class="watermark-overlay egi-overlay"></span>
+      </a>
+      <span class="watermark-text">, secured by</span>
+      <a
+        href="https://www.anchor-msp.com/secured-by-anchor"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watermark-link anchor-link"
+        aria-label="Visit Anchor MSP website"
+      >
+        <img
+          src="/watermarks/anchor-logo.png"
+          alt="Anchor MSP"
+          width="120"
+          height="40"
+          class="watermark-logo"
+        />
+        <span class="watermark-overlay anchor-overlay"></span>
+      </a>
+    </div>
+  </div>
 </footer>
 
 <style>
@@ -159,5 +198,81 @@
 
   @media (max-width: 480px) {
     .footer-inner { grid-template-columns: 1fr; }
+  }
+
+  .watermark-section {
+    background: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    padding: 1rem 0;
+  }
+
+  .watermark-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  .watermark-text {
+    opacity: 0.7;
+  }
+
+  .watermark-link {
+    position: relative;
+    display: inline-block;
+    opacity: 0.6;
+    transition: opacity 300ms ease;
+  }
+
+  .watermark-link:hover {
+    opacity: 1;
+  }
+
+  .watermark-logo {
+    height: auto;
+    display: block;
+    opacity: 0.6;
+  }
+
+  .egi-link .watermark-logo {
+    max-width: 140px;
+    margin-right: -8px;
+  }
+
+  .anchor-link .watermark-logo {
+    max-width: 120px;
+  }
+
+  .watermark-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    pointer-events: none;
+  }
+
+  .egi-overlay {
+    background: #3ec3e0;
+    -webkit-mask-image: url(/watermarks/egi-logo.png);
+    mask-image: url(/watermarks/egi-logo.png);
+  }
+
+  .anchor-overlay {
+    background: #69867E;
+    -webkit-mask-image: url(/watermarks/anchor-logo.png);
+    mask-image: url(/watermarks/anchor-logo.png);
+  }
+
+  .watermark-link:hover .watermark-overlay {
+    opacity: 1;
   }
 </style>
