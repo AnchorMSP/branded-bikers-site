@@ -3,4 +3,8 @@ dist/
 .astro/
 .env
 .env.*
+*.log
+
+.vercel
+.env*
 !.env.example
