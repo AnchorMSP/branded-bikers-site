@@ -1,0 +1,62 @@
+---
+const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY;
+const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com';
+const analyticsEnabled = Boolean(posthogKey);
+
+const serviceName = 'branded-bikers-site';
+const appVersion = import.meta.env.npm_package_version || '0.0.1';
+const release =
+  import.meta.env.VERCEL_GIT_COMMIT_SHA ||
+  import.meta.env.PUBLIC_APP_COMMIT ||
+  'unknown';
+const environment =
+  import.meta.env.PUBLIC_APP_ENV ||
+  import.meta.env.VERCEL_ENV ||
+  import.meta.env.MODE ||
+  'development';
+---
+
+{
+  analyticsEnabled && (
+    <script
+      is:inline
+      define:vars={{ posthogKey, posthogHost, serviceName, appVersion, release, environment }}
+    >
+      (function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags reloadFeatureFlags getFeatureFlag getFeatureFlagPayload group track".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)})(document,window.posthog||[]);
+
+      posthog.init(posthogKey, {
+        api_host: posthogHost,
+        capture_pageview: false,
+        autocapture: false,
+        disable_session_recording: true,
+        loaded: function(client) {
+          client.register({
+            service: serviceName,
+            app_version: appVersion,
+            release: release,
+            environment: environment
+          });
+          client.capture('$pageview', {
+            path: window.location.pathname,
+            title: document.title
+          });
+        }
+      });
+
+      window.addEventListener('error', function(event) {
+        posthog.capture('frontend_error', {
+          message: event.message,
+          source: event.filename,
+          line: event.lineno,
+          column: event.colno
+        });
+      });
+
+      window.addEventListener('unhandledrejection', function(event) {
+        posthog.capture('frontend_unhandled_rejection', {
+          reason: event.reason && event.reason.message ? event.reason.message : String(event.reason)
+        });
+      });
+    </script>
+  )
+}
