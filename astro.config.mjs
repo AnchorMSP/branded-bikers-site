@@ -1,5 +1,9 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://brandedbikers.vercel.app',
+  site: 'https://brandedbikers.com',
+  integrations: [
+    sitemap(),
+  ],
 });
