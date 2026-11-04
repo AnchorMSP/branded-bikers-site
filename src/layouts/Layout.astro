@@ -4,12 +4,28 @@ import Footer from '../components/Footer.astro';
 import Monitoring from '../components/Monitoring.astro';
 import '../styles/global.css';
 
+const SITE_URL = 'https://www.brandedbikers.com';
+
 interface Props {
   title: string;
   description?: string;
+  /** Override the self-referencing canonical, or false to omit it (e.g. 404). */
+  canonical?: string | false;
 }
 
-const { title, description = 'Authentic biker marketing putting your brand on rider backs across America.' } = Astro.props;
+const {
+  title,
+  description = 'Authentic biker marketing putting your brand on rider backs across America.',
+  canonical,
+} = Astro.props;
+
+const pathname = Astro.url.pathname.replace(/\/+$/, '');
+const canonicalUrl =
+  canonical === false
+    ? null
+    : typeof canonical === 'string'
+      ? canonical
+      : new URL(pathname || '/', SITE_URL).href;
 ---
 
 <!doctype html>
@@ -19,6 +35,7 @@ const { title, description = 'Authentic biker marketing putting your brand on ri
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} | BrandedBikers</title>
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <link rel="icon" type="image/png" href="/BBNoBG.png" />
   </head>
   <body>
