@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+  {
+    q: 'What is a motorcycle brand ambassador program?',
+    a: 'A motorcycle brand ambassador program puts your brand on real riders instead of paid actors. Riders in your target regions wear your branded gear on the rides and at the rallies they already attend, then submit GPS-verified mileage, routes, and photos so every mile is documented. BrandedBikers runs these programs with a 10,000+ rider network.',
+  },
+  {
+    q: 'How do brands reach the motorcycle community?',
+    a: 'Brands reach riders through the people riders already trust. That means sponsoring riders and events rather than buying ads: gear on real backs at rallies, brand presence at the events your audience attends, and rider-submitted proof of every ride. Campaigns run through the community instead of around it.',
+  },
+  {
+    q: 'How does motorcycle event marketing and rally sponsorship work?',
+    a: 'Pick the events that matter, and we match riders who already attend them. Riders wear your brand on site and on the ride in, submit photos and routes from each event, and you get an attendance log and photo archive at campaign close. Targeted events range from a single local run to a national rally calendar.',
+  },
+  {
+    q: 'What does authentic marketing to biker culture actually mean?',
+    a: 'It means no hired faces and no forced placements. Riders keep their normal routes and events, and the gear has to read well in the real world — on a bike, in weather, at a rally. Every submission is reviewed before it counts toward your campaign.',
+  },
+  {
+    q: 'What proof do brands get from an ambassador campaign?',
+    a: 'Each campaign ride requires GPS-verified mileage, start/end route documentation, and a minimum of two photos clearly showing the branded gear. At campaign close you receive a report with total miles, regions covered, events attended, and the full photo archive.',
+  },
+  {
+    q: 'Can regional businesses run a motorcycle ambassador program?',
+    a: 'Yes. Dealerships, local brands, restaurants, and events run programs in a single city or state, and national brands roll out across multiple major rallies at once. Programs scale with the number of riders, regions, and events you choose.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const facts = [
+  { number: '10K+', label: 'Rider network' },
+  { number: '2+', label: 'Photos per ride, minimum' },
+  { number: '100%', label: 'Rides GPS-verified' },
+  { number: '50', label: 'States in reach' },
+];
+---
+
+<Layout
+  title="Motorcycle Brand Ambassador Programs"
+  description="Motorcycle brand ambassador programs that put your brand on real riders at rallies and on the road — GPS-verified mileage, photo proof, and reports. How brands reach the motorcycle community authentically."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">For Brands</span>
+      <h1 class="section-title">MOTORCYCLE BRAND <span>AMBASSADOR PROGRAMS</span></h1>
+      <p>
+        A motorcycle brand ambassador program puts your brand on riders who already live in the
+        culture — not paid actors. BrandedBikers matches your campaign with verified riders in your
+        target regions, ships them branded gear, and collects GPS-verified mileage, routes, and
+        photos from every ride, so you get documented proof instead of bought impressions.
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-label">The Short Answers</span>
+      <h2 class="section-title">HOW BRANDS GET <span>IN FRONT OF RIDERS</span></h2>
+      <div class="answers">
+        <div class="answer">
+          <h3>How do brands reach the motorcycle community?</h3>
+          <p>
+            Through riders, not ads. Riders are the distribution channel: they wear your brand on
+            daily rides, at rallies, and everywhere the community gathers. The message travels the
+            way riders actually talk to each other.
+          </p>
+        </div>
+        <div class="answer">
+          <h3>Motorcycle event marketing and rally sponsorship</h3>
+          <p>
+            Target the events that matter and we match riders who already attend them. Sturgis and
+            Daytona each draw 500,000+ riders; Laconia draws 300,000+. Your brand is on site, on
+            the ride in, and in the photo archive you get back.
+          </p>
+        </div>
+        <div class="answer">
+          <h3>Authentic marketing to biker culture</h3>
+          <p>
+            No hired faces, no forced placements. Riders keep their own routes and events, gear is
+            reviewed to read well in the real world, and every submission is checked before it
+            counts. That is what makes the exposure credible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section facts-section">
+    <div class="container">
+      <span class="section-label">The Numbers</span>
+      <h2 class="section-title">PROGRAM <span>FACTS</span></h2>
+      <div class="facts">
+        {facts.map((f) => (
+          <div class="fact">
+            <span class="fact-number">{f.number}</span>
+            <span class="fact-label">{f.label}</span>
+          </div>
+        ))}
+      </div>
+      <p class="facts-note">
+        Every campaign closes with a report covering total miles ridden, regions covered, events
+        attended, and the full photo archive.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <span class="section-label">Ambassador FAQ</span>
+      <h2 class="section-title">QUESTIONS, <span>ANSWERED</span></h2>
+      <div class="faq-list">
+        {faqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.q}</span>
+              <i class="ti ti-chevron-down faq-icon"></i>
+            </summary>
+            <p class="faq-answer">{item.a}</p>
+          </details>
+        ))}
+      </div>
+      <p class="more">
+        Want the full rider-side rules? Read the <a href="/rider-program">Rider Program</a>, or see
+        <a href="/how-it-works">how a campaign runs</a> step by step.
+      </p>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <div>
+        <h3 class="cta-title">PUT YOUR BRAND ON REAL RIDERS</h3>
+        <p class="cta-text">Tell us your regions, events, and timeline — we'll build the program around them.</p>
+      </div>
+      <a href="/contact" class="btn btn-primary">Start Your Campaign</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .narrow { max-width: 760px; }
+
+  .answers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 2.5rem;
+  }
+
+  .answer { background: var(--bg-card); border-left: 3px solid var(--accent); padding: 1.5rem 1.25rem; }
+
+  .answer h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.6rem;
+  }
+
+  .answer p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  .facts-section { background: var(--bg-dark); }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 2.5rem;
+  }
+
+  .fact { background: var(--bg-card); padding: 1.25rem; text-align: center; }
+  .fact-number { display: block; font-family: var(--font-display); font-size: 32px; color: var(--accent); line-height: 1; }
+  .fact-label { display: block; font-size: 11.5px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+
+  .facts-note { font-size: 13px; color: var(--text-muted); margin-top: 1.5rem; line-height: 1.7; }
+
+  .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 2px; }
+  .faq-item { background: var(--bg-card); border-left: 3px solid transparent; transition: border-color 0.15s; }
+  .faq-item[open] { border-left-color: var(--accent); }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-icon { font-size: 18px; color: var(--accent); flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(180deg); }
+  .faq-answer { font-size: 13.5px; color: var(--text-muted); line-height: 1.75; padding: 0 1.25rem 1.25rem; margin: 0; }
+
+  .more { font-size: 13px; color: var(--text-muted); margin-top: 1.5rem; }
+  .more a { color: var(--accent); text-decoration: underline; }
+
+  .cta-section { background: var(--bg-card); border-top: 1px solid var(--border); padding: 2.5rem 0; }
+  .cta-inner { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .cta-title { font-family: var(--font-display); font-size: 20px; color: var(--white); letter-spacing: 0.5px; margin-bottom: 4px; }
+  .cta-text { font-size: 13.5px; color: var(--text-muted); }
+  .cta-inner .btn { margin-left: auto; white-space: nowrap; }
+
+  @media (max-width: 860px) {
+    .answers, .facts { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .answers, .facts { grid-template-columns: 1fr; }
+    .cta-inner { flex-direction: column; align-items: flex-start; }
+    .cta-inner .btn { margin-left: 0; }
+  }
+</style>
